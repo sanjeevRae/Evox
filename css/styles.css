@@ -979,10 +979,16 @@ header {
     }
     
     .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        gap: 20px; 
     }
+    
+    .stat {
+        text-align: center; 
+    }
+    
     
     .card-3d {
         width: 260px;
