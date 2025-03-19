@@ -906,6 +906,17 @@ header {
         width: 100%;
         justify-content: center;
     }
+
+    .hero-stats {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        gap: 20px; 
+    }
+    
+    .stat {
+        text-align: center; 
+    }
     
     .card-3d {
         width: 300px;
