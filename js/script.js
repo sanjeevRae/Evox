@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initAboutInteraction();
     initCardSlider();
     initScrollIndicator();
+    initVideoModal();
 });
 
 /**
@@ -22,83 +23,57 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-links a');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const menuOverlay = document.querySelector('.menu-overlay');
     
-    if (hamburger) {
+    if (hamburger && mobileNav && menuOverlay) {
+        // Toggle mobile menu when hamburger is clicked
         hamburger.addEventListener('click', () => {
-            // Toggle mobile menu
             hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            
-            // Animate hamburger icon
-            const bars = hamburger.querySelectorAll('.bar');
-            bars[0].classList.toggle('animate-bar-1');
-            bars[1].classList.toggle('animate-bar-2');
-            bars[2].classList.toggle('animate-bar-3');
+            mobileNav.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
         });
         
-        // Close mobile menu when clicking on a link
-        navLinksItems.forEach(item => {
-            item.addEventListener('click', () => {
+        // Close menu when clicking the overlay
+        menuOverlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+        
+        // Close menu when clicking a menu link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                
-                const bars = hamburger.querySelectorAll('.bar');
-                bars[0].classList.remove('animate-bar-1');
-                bars[1].classList.remove('animate-bar-2');
-                bars[2].classList.remove('animate-bar-3');
+                mobileNav.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             });
         });
-    }
-    
-    // Add mobile menu styles dynamically
-    const style = document.createElement('style');
-    style.textContent = `
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: left 0.3s ease;
-                z-index: 999;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links ul {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-            
-            .nav-links a {
-                font-size: 1.2rem;
-            }
-            
-            .animate-bar-1 {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            
-            .animate-bar-2 {
-                opacity: 0;
-            }
-            
-            .animate-bar-3 {
-                transform: rotate(45deg) translate(-5px, -6px);
+        
+        // Check screen size on load and resize
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                document.body.classList.add('mobile-device');
+            } else {
+                document.body.classList.remove('mobile-device');
+                // Reset mobile menu when switching to desktop
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         }
-    `;
-    document.head.appendChild(style);
+        
+        // Initial check
+        checkScreenSize();
+        
+        // Check on resize
+        window.addEventListener('resize', checkScreenSize);
+    }
 }
 
 /**
@@ -1032,4 +1007,61 @@ function initScrollIndicator() {
             }
         }
     });
+}
+
+/**
+ * Video Modal Functionality
+ */
+function initVideoModal() {
+    const videoTriggers = document.querySelectorAll('.video-trigger');
+    const videoModal = document.getElementById('video-modal');
+    const closeBtn = document.querySelector('.close-video');
+    const videoIframe = document.querySelector('.video-container iframe');
+    
+    if (!videoModal || videoTriggers.length === 0) return;
+    
+    // Open video modal when clicking trigger
+    videoTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Load iframe src only when clicked (performance optimization)
+            const videoSrc = videoIframe.getAttribute('data-src');
+            videoIframe.setAttribute('src', videoSrc);
+            
+            // Show modal
+            videoModal.classList.add('active');
+            document.body.classList.add('no-scroll');
+        });
+    });
+    
+    // Close modal when clicking close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeVideoModal);
+    }
+    
+    // Close modal when clicking outside
+    videoModal.addEventListener('click', function(e) {
+        if (e.target === videoModal) {
+            closeVideoModal();
+        }
+    });
+    
+    // Close modal when pressing ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+    
+    // Function to close video modal
+    function closeVideoModal() {
+        videoModal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+        
+        // Clear iframe src to stop video
+        setTimeout(() => {
+            videoIframe.setAttribute('src', 'about:blank');
+        }, 300);
+    }
 } 

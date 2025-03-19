@@ -37,6 +37,25 @@
         </nav>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#features"><i class="fas fa-star"></i> Features</a>
+            <a href="#products"><i class="fas fa-box"></i> Products</a>
+            <a href="#testimonials"><i class="fas fa-quote-right"></i> Testimonials</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+        <div class="mobile-nav-actions">
+            <a href="#login" class="btn-secondary">Log In</a>
+            <a href="#order" class="btn-primary">Order Now</a>
+        </div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
+
     <main>
         <!-- Modern Hero Section with 3D Cards -->
         <section id="home" class="hero-section">
@@ -48,7 +67,7 @@
                         <p class="hero-description">Share your complete digital profile with a simple tap. E-VOX NFC business cards combine elegant design with cutting-edge technology.</p>
                         <div class="hero-cta">
                             <a href="#order" class="btn-primary">Get Your Card</a>
-                            <a href="#demo" class="btn-secondary">See How It Works <i class="fas fa-play-circle"></i></a>
+                            <a href="#video-modal" class="btn-secondary video-trigger">See How It Works <i class="fas fa-play-circle"></i></a>
                         </div>
                         <div class="hero-stats">
                             <div class="stat">
@@ -71,9 +90,14 @@
                                 <div class="card-3d card-primary active">
                                     <img src="images/1.svg" alt="Awddel Card Design" class="card-image">
                                 </div>
-                                <div class="card-3d card-secondary">
-                                    <img src="images/2.svg" alt="Awddel Card Design 2" class="card-image">
+
+                                <div class="card-3d card-primary active">
+                                    <img src="images/2.svg" alt="Awddel Card Design" class="card-image">
                                 </div>
+
+                                <!-- <div class="card-3d card-secondary">
+                                    <img src="images/2.svg" alt="Awddel Card Design 2" class="card-image">
+                                </div> -->
                             </div>
                             <div class="slider-arrows">
                                 <div class="slider-arrow prev">
@@ -674,5 +698,15 @@
     </div>
 
     <script src="js/script.js"></script>
+    
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-video">&times;</span>
+            <div class="video-container">
+                <iframe src="about:blank" data-src="https://www.youtube.com/embed/QDeSLUJaCj0?si=bPbXpem7PyC2OIg3" title="YouTube video player" frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 
