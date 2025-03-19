@@ -427,7 +427,7 @@ header {
 .card-3d.prev {
     opacity:0;
     visibility: visible;
-    transform: translate(-90%, -50%) scale(0.8) translateZ(-200px) rotateY(25deg);
+    transform: translate(-70%, -50%) scale(0.8) translateZ(-200px) rotateY(25deg);
     z-index: 2;
 }
 
