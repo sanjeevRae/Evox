@@ -1455,7 +1455,7 @@ header {
     .about-text, .about-visual {
         max-width: 100%;
         width: 100%;
-        text-align:justify;
+       
     }
     
     .interaction-container {
