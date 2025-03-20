@@ -2912,7 +2912,7 @@ footer::before {
 
 .hamburger .bar {
     display: block;
-    width: 250%;
+    width: 280%;
     height: 3px;
     margin: 6px 0;
     background-color: var(--dark-gray);
@@ -2964,7 +2964,7 @@ body.no-scroll {
     .mobile-nav-actions .btn-primary {
         text-align: center;
         display: flex;
-        padding: 12px 56px;
+        padding: 12px 60px;
     }
 }
 
