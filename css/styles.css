@@ -2671,6 +2671,8 @@ footer::before {
 }
 
 @media (max-width: 768px) {
+
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2.5rem;
