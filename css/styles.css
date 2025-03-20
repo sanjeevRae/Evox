@@ -2963,7 +2963,7 @@ body.no-scroll {
     .mobile-nav-actions .btn-secondary,
     .mobile-nav-actions .btn-primary {
         text-align: center;
-        display: block;
+        display: flex;
         padding: 12px 16px;
     }
 }
