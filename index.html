@@ -599,13 +599,18 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 E-VOX. All rights reserved.</p>
-                <p>Environment Voice - Sustainable Connections for a Digital Future</p>
+                <script>
+                    window.onload = function() {
+                      var now = new Date();
+                      var year = now.getFullYear();
+                      document.getElementById("date").innerHTML = year;
+                    };
+                </script>
+                <p>&copy; <span id="date">2025</span> <strong class="px-1 sitename">E-VOX.</strong> <span>All Rights Reserved</span></p>
             </div>
         </div>
     </footer>
 
-    <!-- Order Popup -->
     <div id="order-popup" class="popup">
         <div class="popup-content">
             <span class="close-popup">&times;</span>
@@ -709,4 +714,4 @@
         </div>
     </div>
 </body>
-</html> 
+</html>
