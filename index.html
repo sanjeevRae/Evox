@@ -520,7 +520,7 @@
                         </div>
                     </div>
                     <div class="contact-form animate-on-scroll slide-in-right">
-                        <form id="contactForm">
+                        <form id="contactForm" class="php-email-form">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" name="name" required>
@@ -538,12 +538,48 @@
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
                             <button type="submit" class="btn-primary">Send Message</button>
+                            
+                            <div class="form-group">
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- EmailJS functionality -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function() {
+        emailjs.init("C-c_ieBFgoEKweILO");
+      })();
+  
+      document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const userEmail = document.getElementById("email").value;
+        const userMessage = document.getElementById("message").value;
+        const fullMessage = `From: ${userEmail}\n\n${userMessage}`;
+        const formData = {
+          name: document.getElementById("name").value,
+          email: userEmail,
+          subject: document.getElementById("subject").value,
+          message: fullMessage
+        };
+  
+        emailjs.send("service_wje2o1f", "template_oa0ipsl", formData)
+          .then(function(response) {
+            console.log("SUCCESS!", response.status, response.text);
+            document.querySelector(".sent-message").style.display = "block";
+            document.getElementById("contactForm").reset();
+          }, function(error) {
+            console.log("FAILED...", error);
+            document.querySelector(".error-message").style.display = "block";
+          });
+      });
+    </script>
 
     <footer>
         <div class="container">
