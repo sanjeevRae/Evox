@@ -1975,6 +1975,12 @@ header {
         padding: 0.2rem 0.6rem;
         font-size: 0.7rem;
     }
+
+    .contact-form .btn-primary {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 576px) {
