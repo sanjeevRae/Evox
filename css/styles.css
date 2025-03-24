@@ -2684,17 +2684,17 @@ footer::before {
 
 
     .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem 2rem;
     }
     
     .footer-column:first-child {
-        grid-column: span 1;
-        text-align: center;
+        grid-column: span 2;
+        text-align: left;
     }
     
     .footer-column h3 {
-        text-align: center;
+        text-align:left;
     }
     
     .footer-column h3::after {
@@ -2703,15 +2703,15 @@ footer::before {
     }
     
     .contact-list li {
-        justify-content: center;
+        justify-content: left;
     }
     
     .footer-social {
-        justify-content: center;
+        justify-content: left;
     }
     
     .footer-column ul {
-        align-items: center;
+        align-items:flex-start;
     }
     
     /* Enhanced mobile footer styling */
