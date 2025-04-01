@@ -1,8 +1,3 @@
-/**
- * E-VOX - Modern NFC Business Cards
- * Main JavaScript File
- */
-
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initMobileMenu();
@@ -16,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCardSlider();
     initScrollIndicator();
     initVideoModal();
+    initCustomCursor();
 });
 
 /**
@@ -1065,3 +1061,22 @@ function initVideoModal() {
         }, 300);
     }
 } 
+
+function initCustomCursor() {
+    const cursor = document.querySelector('.cursor');
+    const cursorFollower = document.querySelector('.cursor-follower');
+    
+    if (!cursor || !cursorFollower) return;
+    
+    document.addEventListener('mousemove', function(e) {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      setTimeout(function() {
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+      }, 100);
+    });
+    
+  
+  }
