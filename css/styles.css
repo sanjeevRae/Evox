@@ -2042,6 +2042,10 @@ header {
     background-color: var(--white);
 }
 
+.products-section p {
+   padding: 2rem;
+}
+
 .product-cards {
     display: flex;
     flex-wrap: wrap;
@@ -2352,10 +2356,12 @@ header {
 
 /* ===== CTA SECTION ===== */
 .cta-section {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    /* background: linear-gradient(135deg, var(--primary), var(--primary-dark)); */
+    background: black;
     color: var(--white);
     text-align: center;
-    padding: var(--spacing-xxl) 0;
+    /* padding: var(--spacing-xxl) ; */
+    padding: 10rem;
 }
 
 .cta-content h2 {
@@ -2371,14 +2377,16 @@ header {
 }
 
 .cta-section .btn-primary {
-    background-color: var(--white);
-    color: var(--primary);
+    background-color: transparent;
+    color: var(--white);
     border-color: var(--white);
+  
 }
 
 .cta-section .btn-primary:hover {
-    background-color: transparent;
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--primary);
+   
 }
 
 /* ===== CONTACT SECTION ===== */
